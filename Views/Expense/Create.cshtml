@@ -1,0 +1,50 @@
+﻿@model InAndOut.Models.Expense
+
+<div class="container border">
+    <form method="post" asp-action="Create">
+        <div asp-validation-summary="ModelOnly"></div>
+   
+        <div class="form-group row">
+            <div class="text-primary col-12 pt-2">
+                <h2>Create new expense</h2>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-4">
+                <label asp-for="Amount"></label>
+            </div>
+            <div class="col-4">
+                <label asp-for="ExpenseTypeId"></label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <select asp-for="ExpenseTypeId" asp-items="ViewBag.DropDown" class="form-control">
+                    <option>--Select Expense Type--</option>
+                </select>
+                <span asp-validation-for="ExpenseTypeId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-12">
+                <input type="submit" class="btn btn-primary" />
+                <a class="btn btn-success ml-1" asp-action="Index" asp-controller="Expense">Go to Index</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
